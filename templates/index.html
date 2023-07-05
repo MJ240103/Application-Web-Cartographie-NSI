@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Flask Template</title>
+        <link rel="stylesheet" type="text/css" href="static/stylee.css?nimportequoi={{horodateur}}">
+        <link rel="shortcut icon" type="image/png" href="static/favicon.png"/>
+	</head>
+	<body>
+        <div>
+            <h1>Projet #3 NSI : Cartographie</h1>
+        </div>
+        <div>
+            <form action="/retour_carte" target="cadre_carte" method="POST" enctype="multipart/form-data">
+            <div>
+                
+                <input type="text" placeholder="Saisissez la latitude" name="latitude" id="latitude" class="champ">
+                <input type="text" placeholder="Saisissez la longitude" name="longitude" id="longitude" class="champ">
+            </div>
+            <div>
+                <input type="text" placeholder="Saisissez une trame GGA" name="trame" id="trame" class="champ">
+            </div>
+            <div>
+                <input type="file" name="fichier" accept=".txt, .nmea" id="fichier" class="select">
+            </div>
+            <div>
+                <input type="file" accept=".png, .jpg" name="image" id="image">
+            </div>
+            <div>
+                <input type="submit" value="envoyer les coordonnées" id="envoi" name"envoi" class="select">
+            </div>
+            </form>
+        </div>
+        <div>
+            <iframe width="400" height="300"name="cadre_carte" id="fenetre"></iframe>
+        </div>
+	</body>
+</html>
+
+<script>
+alert("lkvldkv");
+const latitude = document.getElementById("latitude");
+const longitude = document.getElementById("longitude");
+const trame = document.getElementById("trame");
+const fichier = document.getElementById("fichier");
+const bouton = document.getElementById("envoi");
+
+function champsInterdits(event) {
+    if (latitude){
+        alert("latitude non vide")
+    } else {
+        alert("latitude vide")
+    }
+    if (latitude.length < || longitude){
+        trame.disabled = true;
+        fichier.disabled = true;
+        envoi.disabled = false
+    } else if (trame) {
+        latitude.disabled = true;
+        longitude.disabled = true;
+        fichier.disabled = true;
+        envoi.disabled = false
+    } else if (fichier) {
+        latitude.disabled = true;
+        longitude.disabled = true;
+        trame.disabled = true;
+        envoi.disabled = false
+    } else {
+        envoi.disabled = true
+    }
+}
+
+latitude.addEventListener('click', champsInterdits);
+longitude.addEventListener('click', champsInterdits);
+trame.addEventListener('click', champsInterdits);
+fichier.addEventListener('click', champsInterdits);</script>
